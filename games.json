@@ -1,0 +1,11 @@
+[
+  {
+    "gamefolder": "game",
+    "players": [
+      "first",
+      "second",
+      "third"
+    ],
+    "args": "../maps/map.json"
+  }
+]

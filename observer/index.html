@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pozerač</title>
+
+    <script defer src="js/vendor/pako_inflate.min.js"></script>
+    <script defer src="js/vendor/konva.min.js"></script>
+    <script defer src="js/vendor/howler.core.min.js"></script>
+    <script defer src="js/render.js"></script>
+    <script defer src="js/game.js"></script>
+    <script defer src="js/observer.js"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-family: sans-serif;
+        }
+
+        .controls {
+            border-radius: 0.25rem;
+            overflow: hidden;
+            display: flex;
+            margin: 15px;
+            background: #444a;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            align-items: center;
+            color: white;
+            font-size: 14px;
+        }
+
+        .btn {
+            display: flex;
+            cursor: pointer;
+            padding: 0.25rem;
+        }
+
+        .btn:hover {
+            background: #333;
+        }
+
+        .control {
+            display: flex;
+            align-items: center;
+            padding: 0 0.5rem;
+            white-space: nowrap;
+        }
+
+        #js-slider {
+            width: 100%;
+        }
+
+        #js-canvas {
+            width: 100vw;
+            height: 100vh;
+            background: oklch(25% 0 200);
+        }
+    </style>
+</head>
+<body>
+
+<div id="js-canvas"></div>
+
+<div class="controls">
+    <div class="btn" id="js-play">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M8 5v14l11-7z"/>
+        </svg>
+    </div>
+    <div class="btn" id="js-pause">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+        </svg>
+    </div>
+    <div class="control">
+        <input type="file" onchange="game.loadFile(this)" id="js-file">
+    </div>
+    <div class="control" style="width: 100%;">
+        <input type="range" id="js-slider" min="0" max="0">
+    </div>
+    <div class="control">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"
+             style="margin-right: 0.25rem">
+            <path d="m20.38 8.57-1.23 1.85a8 8 0 0 1-.22 7.58H5.07A8 8 0 0 1 15.58 6.85l1.85-1.23A10 10 0 0 0 3.35 19a2 2 0 0 0 1.72 1h13.85a2 2 0 0 0 1.74-1 10 10 0 0 0-.27-10.44zm-9.79 6.84a2 2 0 0 0 2.83 0l5.66-8.49-8.49 5.66a2 2 0 0 0 0 2.83z"/>
+        </svg>
+        <select id="js-speed">
+            <option value="10" selected>10ms</option>
+            <option value="25">25ms</option>
+            <option value="50">50ms</option>
+            <option value="100">100ms</option>
+            <option value="250">250ms</option>
+            <option value="500">500ms</option>
+        </select>
+    </div>
+    <div class="control" id="js-time">
+        - / -
+    </div>
+</div>
+</body>
+</html>

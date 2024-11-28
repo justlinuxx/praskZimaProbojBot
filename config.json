@@ -1,0 +1,22 @@
+{
+  "server": "./server_linux",
+  "game_root": ".",
+  "players": {
+    "first": {
+      "command": "./player/player.py",
+      "language": "py"
+    },
+    "second": {
+      "command": "./player/test.py",
+      "language": "py"
+    },
+    "third": {
+      "command": "./player/lepsi_player.py",
+      "language": "py"
+    }
+  },
+  "timeout": {
+    "py": 1
+  },
+  "disable_gzip": true
+}
